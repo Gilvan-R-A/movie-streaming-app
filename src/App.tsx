@@ -1,13 +1,6 @@
-import './App.css'
+import { AppRoutes } from "./routes";
 
-function App() {
- 
+ export function App() {
+   return <AppRoutes />
+ }
 
-  return (
-    <>
-    <h1>Meu Projeto de Streaming de Filmes</h1>
-    </>
-  )
-}
-
-export default App
