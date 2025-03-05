@@ -20,3 +20,15 @@ export const getPopularMovies = async () => {
         return [];
     }
 };
+
+export async function searchMovies(query: string) {
+    try {
+        const response = await axios.get(
+            `${BASE_URL}/search/movie?api_key=${API_KEY}&language=pt-BR&query=${query}`
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error("Erro ao buscar filmes:", error);
+        return [];
+    }
+}
