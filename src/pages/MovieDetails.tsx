@@ -1,31 +1,54 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import axios from "axios";
+import { getMovieDetails, getMovieVideos } from "../services/api";
 
-const API_KEY = import.meta.env.VITE_API_KEY;
-const BASE_URL = "https://api.themoviedb.org/3";
-const IMAGE_BASE_URL = "https://image.tmdb.org/t/p/w500";
 
 export function MovieDetails() {
-    const { id } = useParams();
+    const { id } = useParams<{ id: string }>();
     const [movie, setMovie] = useState<any>(null);
+    const [videoKey, setVideoKey] = useState<string | null>(null);
 
     useEffect(() => {
-        axios
-            .get(`${BASE_URL}/movie/${id}?api_key=${API_KEY}&language=pt-BR`)
-            .then((response) => setMovie(response.data))
-            .catch((error) => console.error("Erro ao buscar detalhes do filme", error));
+        async function fetchMovieDetails() {
+            const movieData = await getMovieDetails(id!);
+            setMovie(movieData);
+
+            const fetchedVideos: any[] = await getMovieVideos(id!);
+
+            const trailer = fetchedVideos.find((video) => video.type === "Trailer" && video.site === "YouTube");
+
+            if (trailer) {
+                setVideoKey(trailer.key);
+            }
+        }
+
+        fetchMovieDetails();
     }, [id]);
 
-    if (!movie) return <p>Carregando...</p>
+    if (!movie) {
+        return <p>Carregando...</p>;
+    }
 
     return (
-        <div style={{ padding: "20px", textAlign: "center"}}>
+        <div>
             <h1>{movie.title}</h1>
-            <img src={`${IMAGE_BASE_URL}${movie.poster_path}`} alt={movie.title} width="300px" />
-            <p><strong>Sinopse:</strong> {movie.overview}</p>
-            <p><strong>Avaliação:</strong> {movie.vote_average.toFixed(1)}</p>
-            <p><strong>Data de lançamento:</strong> {movie.release_date}</p>
+            <p>{movie.overview}</p>
+
+            {videoKey ? (
+                <div>
+                    <h2>Trailer</h2>
+                    <iframe 
+                        width="100%" 
+                        height="400" 
+                        src={`https://www.youtube.com/embed/${videoKey}`} 
+                        title="Trailer do Filme" 
+                        style={{border: "none"}} 
+                        allowFullScreen
+                        ></iframe>
+                </div>
+            ) : (
+                <p>Trailer não disponível.</p>
+            )}
         </div>
     );
 }

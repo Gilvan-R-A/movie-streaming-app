@@ -32,3 +32,27 @@ export async function searchMovies(query: string) {
         return [];
     }
 }
+
+export async function getMovieVideos(movieId: string) {
+    try {
+        const response = await axios.get(
+            `${BASE_URL}/movie/${movieId}/videos?api_key=${API_KEY}&language=pt-BR`
+        );
+        return response.data.results;
+    } catch (error) {
+        console.error("Erro ao buscar vídeos do filme:", error);
+        return [];
+    }
+}
+
+export async function getMovieDetails(movieId: string) {
+    try {
+        const response = await axios.get(
+            `${BASE_URL}/movie/${movieId}?api_key=${API_KEY}&language=pt-BR`
+        );
+        return response.data;
+    } catch (error) {
+        console.error("Erro ao buscar detalhes do filme:", error);
+        return null;
+    }
+}
