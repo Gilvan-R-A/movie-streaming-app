@@ -1,9 +1,35 @@
 import { Link } from "react-router-dom";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
 
 export function Navbar() {
+
+    const [searchTerm, setSearchTerm] = useState("");
+    const navigate = useNavigate();
+
+    function handleSearch(e: React.FormEvent) {
+        e.preventDefault();
+        if (searchTerm.trim()) {
+            navigate(`/search?q=${searchTerm}`);
+            setSearchTerm("");
+        }
+    }
+
     return (
         <nav style={styles.navbar}>
             <h1 style={styles.logo}>MovieApp</h1>
+
+            <form onSubmit={handleSearch}>
+                <input type="text" 
+                value={searchTerm} 
+                onChange={(e) => setSearchTerm(e.target.value)} 
+                placeholder="Buscar filmes..."
+                />
+                <button>
+                🔍
+                </button>
+            </form>
+
             <div style={styles.links}>
                 <Link to="/" style={styles.link}>Home</Link>
                 <Link to="/favorites" style={styles.link}>Favoritos</Link>
