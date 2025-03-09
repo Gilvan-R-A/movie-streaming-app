@@ -1,12 +1,14 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getMovieDetails, getMovieVideos } from "../services/api";
+import { useFavorites } from "../hooks/useFavorites";
 
 
 export function MovieDetails() {
     const { id } = useParams<{ id: string }>();
     const [movie, setMovie] = useState<any>(null);
     const [videoKey, setVideoKey] = useState<string | null>(null);
+    const { toggleFavorite, isFavorite } = useFavorites();
 
     useEffect(() => {
         async function fetchMovieDetails() {
@@ -33,6 +35,10 @@ export function MovieDetails() {
         <div>
             <h1>{movie.title}</h1>
             <p>{movie.overview}</p>
+
+            <button onClick={() => toggleFavorite(movie)}>
+                {isFavorite(movie.id) ? "Remover dos Favoritos" : "Adicionar aos Favoritos"}
+            </button>
 
             {videoKey ? (
                 <div>
