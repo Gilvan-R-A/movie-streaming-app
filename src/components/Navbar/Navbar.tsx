@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import styles from "./Navbar.module.css"
 
 export function Navbar() {
 
@@ -16,8 +17,8 @@ export function Navbar() {
     }
 
     return (
-        <nav style={styles.navbar}>
-            <h1 style={styles.logo}>MovieApp</h1>
+        <nav className={styles.navbar}>
+            <h2>MovieApp</h2>
 
             <form onSubmit={handleSearch}>
                 <input type="text" 
@@ -30,34 +31,11 @@ export function Navbar() {
                 </button>
             </form>
 
-            <div style={styles.links}>
-                <Link to="/" style={styles.link}>Home</Link>
-                <Link to="/favorites" style={styles.link}>Favoritos</Link>
-            </div>
+            <ul className={styles.menu}>
+                <li><Link to="/">Home</Link></li>
+                <li><Link to="/favorites">Favoritos</Link></li>
+                
+            </ul>
         </nav>
     );
-}
-
-const styles = {
-    navbar: {
-        display: "flex",
-        justifyContent: "space-between",
-        alignItems: "center",
-        padding: "15px 20px",
-        backgroundColor: "#333",
-        color: "#fff",
-    },
-    logo: {
-        fontSize: "flex",
-        fontWeight: "bold",
-    },
-    links: {
-        display: "flex",
-        gap: "15px",
-    },
-    link: {
-        color: "#fff",
-        textDecoration: "none",
-        fontSize: "1.2rem",
-    }
 }

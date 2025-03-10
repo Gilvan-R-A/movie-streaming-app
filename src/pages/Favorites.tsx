@@ -1,5 +1,6 @@
 import { useFavorites } from "../hooks/useFavorites";
 import { Link } from "react-router-dom";
+import styles from "./Favorites.module.css"
 
 export function Favorites() {
     const { favorites, toggleFavorite } = useFavorites();
@@ -11,7 +12,7 @@ export function Favorites() {
             {favorites.length === 0 ? (
                 <p>Nenhum filme favorito adicionado.</p>
             ) : (
-                <div style={{display: "flex", flexWrap: "wrap", gap: "20px"}}>
+                <div className={styles.favorites}>
                     {favorites.map((movie) =>(
                         <div key={movie.id}>
                             <Link to={`/movie/${movie.id}`}>

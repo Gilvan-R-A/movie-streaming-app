@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react";
 import { getPopularMovies } from "../services/api";
-import { Link } from "react-router-dom";
+import { MovieCard } from "../components/MovieCard/MovieCard";
+// import { Link } from "react-router-dom";
+import styles from "./Home.module.css"
 
 export function Home() {
   const [movies, setMovies] = useState<any[]>([]);
@@ -13,27 +15,19 @@ export function Home() {
     fetchMovies();
   }, []);
 
-
   return (
-    <div>
+    <div className={styles.container}>
       <h1>Filmes Populares</h1>
 
-      <div style={{ display: "flex", flexWrap: "wrap", gap: "20px" }}>
+      <div className={styles.grid}>
         {movies.length > 0 ? (
           movies.map((movie) => (
-            <div key={movie.id} style={{ textAlign: "center" }}>
-              <Link
-                to={`/movie/${movie.id}`}
-                style={{ textDecoration: "none", color: "black" }}
-              >
-                <img
-                  src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`}
-                  alt={movie.title}
-                  width={200}
-                />
-                <h3>{movie.title}</h3>
-              </Link>
-            </div>
+            <MovieCard
+            key={movie.id} 
+            id={movie.id}
+            title={movie.title}
+            posterPath={movie.poster_path}
+            />
           ))
         ) : (
           <p>Nenhum filme encontrado.</p>
