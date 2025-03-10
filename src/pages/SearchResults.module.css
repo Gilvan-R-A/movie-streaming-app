@@ -1,0 +1,11 @@
+.container {
+    padding: 20px;
+    text-align: center;
+}
+
+.moviesGrid {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
