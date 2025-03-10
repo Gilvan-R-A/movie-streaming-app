@@ -1,0 +1,81 @@
+.container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    color: #333;
+    margin-bottom: 70px;
+}
+
+.movieDetails {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    max-width: 900px;
+    width: 100%;
+    justify-content: center;
+}
+
+.poster {
+    max-width: 300px;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+.details {
+    max-width: 500px;
+}
+
+h1 {
+    font-size: 2rem;
+    margin-bottom: 10px;
+}
+
+p {
+    font-size: 1rem;
+    line-height: 1.5;
+    opacity: 0.8;
+}
+
+.favoriteButton {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 1rem;
+    transition: background 0.3s;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-top: 15px;
+}
+
+.favoriteButton:hover {
+    background-color: darkred;
+}
+
+.trailer {
+    margin-top: 20px;
+    width: 100%;
+    max-width: 900px;
+}
+
+.trailer iframe {
+    width: 100%;
+    height: 500px;
+    border-radius: 10px;
+}
+
+@media (max-width: 768px) {
+    .movieDetails {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+
+    .poster {
+        max-width: 100%;
+    }
+}
