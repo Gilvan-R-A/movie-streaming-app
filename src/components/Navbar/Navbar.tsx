@@ -1,41 +1,57 @@
 import { Link } from "react-router-dom";
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "./Navbar.module.css"
+import styles from "./Navbar.module.css";
 
 export function Navbar() {
+  const [searchTerm, setSearchTerm] = useState("");
+  const navigate = useNavigate();
+  const [isOpen, setIsOpen] = useState(false);
 
-    const [searchTerm, setSearchTerm] = useState("");
-    const navigate = useNavigate();
-
-    function handleSearch(e: React.FormEvent) {
-        e.preventDefault();
-        if (searchTerm.trim()) {
-            navigate(`/search?q=${searchTerm}`);
-            setSearchTerm("");
-        }
+  function handleSearch(e: React.FormEvent) {
+    e.preventDefault();
+    if (searchTerm.trim()) {
+      navigate(`/search?q=${searchTerm}`);
+      setSearchTerm("");
+      setIsOpen(false);
     }
+  }
 
-    return (
-        <nav className={styles.navbar}>
-            <h2>MovieApp</h2>
+  return (
+    <nav className={styles.navbar}>
+      <div className={styles.navTop}>
+        <h2>MovieApp</h2>
 
-            <form onSubmit={handleSearch}>
-                <input type="text" 
-                value={searchTerm} 
-                onChange={(e) => setSearchTerm(e.target.value)} 
-                placeholder="Buscar filmes..."
-                />
-                <button>
-                🔍
-                </button>
-            </form>
+        <button
+          className={styles.menuButton}
+          onClick={() => setIsOpen(!isOpen)}
+        >
+          ☰
+        </button>
+      </div>
 
-            <ul className={styles.menu}>
-                <li><Link to="/">Home</Link></li>
-                <li><Link to="/favorites">Favoritos</Link></li>
-                
-            </ul>
-        </nav>
-    );
+      <form onSubmit={handleSearch} className={styles.searchForm}>
+        <input
+          type="text"
+          value={searchTerm}
+          onChange={(e) => setSearchTerm(e.target.value)}
+          placeholder="Buscar filmes..."
+        />
+        <button>🔍</button>
+      </form>
+
+      <ul className={`${styles.menu} ${isOpen ? styles.show : ""}`}>
+        <li>
+          <Link to="/" onClick={() => setIsOpen(false)}>
+            Home
+          </Link>
+        </li>
+        <li>
+          <Link to="/favorites" onClick={() => setIsOpen(false)}>
+            Favoritos
+          </Link>
+        </li>
+      </ul>
+    </nav>
+  );
 }
