@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
-import { getMovieDetails, getMovieVideos } from "../services/api";
-import { useFavorites } from "../hooks/useFavorites";
+import { getMovieDetails, getMovieVideos } from "../../services/api";
+import { useFavorites } from "../../hooks/useFavorites";
 import styles from "./MovieDetails.module.css";
 import { FaHeart, FaRegHeart } from "react-icons/fa";
 

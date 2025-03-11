@@ -1,7 +1,6 @@
 import { useEffect, useState } from "react";
-import { getPopularMovies } from "../services/api";
-import { MovieCard } from "../components/MovieCard/MovieCard";
-// import { Link } from "react-router-dom";
+import { getPopularMovies } from "../../services/api";
+import { MovieCard } from "../../components/MovieCard/MovieCard";
 import styles from "./Home.module.css"
 
 export function Home() {

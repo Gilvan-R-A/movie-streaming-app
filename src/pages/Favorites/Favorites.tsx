@@ -1,4 +1,4 @@
-import { useFavorites } from "../hooks/useFavorites";
+import { useFavorites } from "../../hooks/useFavorites";
 import { Link } from "react-router-dom";
 import styles from "./Favorites.module.css"
 

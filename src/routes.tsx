@@ -1,8 +1,8 @@
 import { Routes, Route} from "react-router-dom";
-import { Home } from "./pages/Home";
-import { MovieDetails } from "./pages/MovieDetails";
-import { Favorites } from "./pages/Favorites";
-import { SearchResults } from "./pages/SearchResults";
+import { Home } from "./pages/Home/Home";
+import { MovieDetails } from "./pages/MovieDetails/MovieDetails";
+import { Favorites } from "./pages/Favorites/Favorites";
+import { SearchResults } from "./pages/SearchResults/SearchResults";
 
 export function AppRoutes() {
     return (

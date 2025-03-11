@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { useSearchParams } from "react-router-dom";
-import { searchMovies } from "../services/api";
-import { MovieCard } from "../components/MovieCard/MovieCard";
+import { searchMovies } from "../../services/api";
+import { MovieCard } from "../../components/MovieCard/MovieCard";
 import styles from "./SearchResults.module.css";
 
 export function SearchResults() {
