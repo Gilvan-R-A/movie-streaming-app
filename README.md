@@ -1,54 +1,114 @@
-# React + TypeScript + Vite
+<h1 align="center">
+  Streaming de Filmes
+</h1>
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+Aplicação para visualizar e gerenciar filmes favoritos,  consumindo a API do The Movie Database (TMDb).   
 
-Currently, two official plugins are available:
+## Tecnologias Utilizadas   
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+- React.js   
+- React Router   
+- TypeScript   
+- CSS Modules   
+- API do TMDb   
+- React Icons   
 
-## Expanding the ESLint configuration
+## Estrutura do Projeto   
 
-If you are developing a production application, we recommend updating the configuration to enable type-aware lint rules:
+```   
+📦 movie-streaming
+├── 📂 node_modules           # Dependências do projeto
+├── 📂 public                 # Arquivos públicos (favicon, index.html, etc.)
+├── 📂 src                    # Código-fonte principal
+│   ├── 📂 assets             # Arquivos de mídia e estilos globais
+│   ├── 📂 components         # Componentes reutilizáveis
+│   │   ├── 📂 Footer
+│   │   │   ├── Footer.tsx
+│   │   │   ├── Footer.module.css
+│   │   ├── 📂 MovieCard
+│   │   │   ├── MovieCard.tsx
+│   │   │   ├── MovieCard.module.css
+│   │   ├── 📂 Navbar
+│   │   │   ├── Navbar.tsx
+│   │   │   ├── Navbar.module.css
+│   ├── 📂 hooks              # Hooks personalizados
+│   │   ├── useFavorites.ts
+│   ├── 📂 pages              # Páginas do aplicativo
+│   │   ├── 📂 Favorites
+│   │   │   ├── Favorites.tsx
+│   │   │   ├── Favorites.module.css
+│   │   ├── 📂 Home
+│   │   │   ├── Home.tsx
+│   │   │   ├── Home.module.css
+│   │   ├── 📂 MovieDetails
+│   │   │   ├── MovieDetails.tsx
+│   │   │   ├── MovieDetails.module.css
+│   │   ├── 📂 SearchResults
+│   │   │   ├── SearchResults.tsx
+│   │   │   ├── SearchResults.module.css
+│   ├── 📂 services           # Comunicação com a API
+│   │   ├── api.ts
+│   ├── App.css
+│   ├── App.tsx
+│   ├── index.css
+│   ├── main.tsx
+│   ├── routes.tsx            # Gerenciamento das rotas
+│   ├── vite-env.d.ts
+├── .env                      # Variáveis de ambiente
+├── .gitignore                # Arquivos ignorados pelo Git
+├── index.html                # Estrutura base do projeto
+├── package-lock.json         # Controle de versões das dependências
+├── package.json              # Dependências e scripts npm
+├── tsconfig.app.json         # Configuração do TypeScript para o app
+├── tsconfig.json             # Configuração principal do TypeScript
+├── tsconfig.node.json        # Configuração do TypeScript para o Node.js
+└── vite.config.ts            # Configuração do Vite
+```   
 
-```js
-export default tseslint.config({
-  extends: [
-    // Remove ...tseslint.configs.recommended and replace with this
-    ...tseslint.configs.recommendedTypeChecked,
-    // Alternatively, use this for stricter rules
-    ...tseslint.configs.strictTypeChecked,
-    // Optionally, add this for stylistic rules
-    ...tseslint.configs.stylisticTypeChecked,
-  ],
-  languageOptions: {
-    // other options...
-    parserOptions: {
-      project: ['./tsconfig.node.json', './tsconfig.app.json'],
-      tsconfigRootDir: import.meta.dirname,
-    },
-  },
-})
+## Funcionalidades   
+
+- Listagem de filmes populares   
+- Busca por filmes   
+- Adicionar filmes aos favoritos   
+- Exibição de detalhes do filme   
+- Resposividade para dispositivos móveis   
+
+## Como instalar e rodar o projeto   
+
+1. Clone o repositório:   
+
 ```
+git clone https://github.com/Gilvan-R-A/movie-streaming-app   
+```   
+   
+2. Entre na pasta do projeto:   
 
-You can also install [eslint-plugin-react-x](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-x) and [eslint-plugin-react-dom](https://github.com/Rel1cx/eslint-react/tree/main/packages/plugins/eslint-plugin-react-dom) for React-specific lint rules:
+```   
+cd movie-streaming   
+```   
+3. Instale as dependências:   
 
-```js
-// eslint.config.js
-import reactX from 'eslint-plugin-react-x'
-import reactDom from 'eslint-plugin-react-dom'
+```   
+npm install   
+```   
 
-export default tseslint.config({
-  plugins: {
-    // Add the react-x and react-dom plugins
-    'react-x': reactX,
-    'react-dom': reactDom,
-  },
-  rules: {
-    // other rules...
-    // Enable its recommended typescript rules
-    ...reactX.configs['recommended-typescript'].rules,
-    ...reactDom.configs.recommended.rules,
-  },
-})
-```
+4. Inicie o servidor:   
+
+```   
+npm run dev   
+```   
+
+5. Acesse no navegador:   
+
+```   
+http://localhost:5173   
+```   
+
+## Como Contribuir   
+
+1. Faça um **fork** do repositório.   
+2. Crie uma nova branch: git checkout -b minha-feature   
+3. Faça as alterações e commit: git commit -m "Minha nova feature".   
+4. Envie para o repositório remoto: git push origin minha-feature.   
+5. Abra um **Pull Request.**   
+
