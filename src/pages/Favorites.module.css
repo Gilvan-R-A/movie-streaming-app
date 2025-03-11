@@ -1,5 +1,72 @@
+.favoritesContainer {
+    text-align: center;
+    padding: 20px;
+    margin-bottom: 80px;
+}
+
+.favoritesContainer h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 20px;
+    text-transform: uppercase;
+}
+
+.favoritesContainer p {
+    font-size: 1.2rem;
+    color: #ccc;
+    margin-top: 20px;
+}
+
 .favorites {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
     gap: 20px;
+    padding: 20px;
+
+}
+
+.favorites div {
+    background-color: #1a1a1a;
+    border-radius: 10px;
+    padding: 10px;
+    text-align: center;
+    transition: transform 0.3s ease-in-out;
+    width: 100%;
+    max-width: 250px;
+    flex: 1 1 200px;
+}
+
+.favorites div:hover {
+    transform: scale(1.05);
+}
+
+.favorites img {
+    width: 100%;
+    height: auto;
+    border-radius: 8px;
+}
+
+.favorites h3 {
+    font-size: 1rem;
+    color: #fff;
+    margin-top: 10px;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.favorites button {
+    background-color: red;
+    color: white;
+    border: none;
+    padding: 8px 12px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background 0.3s;
+    margin-top: 10px;
+}
+
+button:hover {
+    background-color: darkred;
 }
